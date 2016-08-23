@@ -37,14 +37,14 @@ public class EchoTestServer {
                  @Override
                  public void initChannel(SocketChannel ch) throws Exception {
                      ChannelPipeline pipeline = ch.pipeline();
-//                     pipeline.addLast(new EchoServerHandler());
-                     pipeline.addLast("frameDecoder", new LineBasedFrameDecoder(80));
-                     pipeline.addLast("stringDecoder", new StringDecoder(CharsetUtil.US_ASCII));
-
-                     // Encoder
-                     pipeline.addLast("stringEncoder", new StringEncoder(CharsetUtil.US_ASCII));
-
-                     pipeline.addLast(new EchoServerStringHandler());
+                     pipeline.addLast(new EchoServerHandler());
+//                     pipeline.addLast("frameDecoder", new LineBasedFrameDecoder(80));
+//                     pipeline.addLast("stringDecoder", new StringDecoder(CharsetUtil.US_ASCII));
+//
+//                     // Encoder
+//                     pipeline.addLast("stringEncoder", new StringEncoder(CharsetUtil.US_ASCII));
+//
+//                     pipeline.addLast(new EchoServerStringHandler());
                  }
              })
              .option(ChannelOption.SO_BACKLOG, 128)          // (5)
